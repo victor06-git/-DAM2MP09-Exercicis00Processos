@@ -14,7 +14,7 @@ public class Main {
         // Compartir dades entre les tasques
         ConcurrentHashMap<String, Integer> sharedData = new ConcurrentHashMap<>();
 
-        // Latch per sincronitzar l'inici de les tasques (simula cooperació)
+        // Latch per sincronitzar l'inici de les tasques
         CountDownLatch latch = new CountDownLatch(1);
 
         // Tasca 1: Inserció de dades
