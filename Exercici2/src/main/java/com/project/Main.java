@@ -25,7 +25,7 @@ public class Main {
             try {
                 for (int i = 0; i < 5; i++) {
                     int value = (i + 100) * 100; // Exemple: valors inicials com 10000, 10100, etc.
-                    sharedData.put("xec" + i, value);
+                    sharedData.put("xec" + i, value); // Clau: xec0, xec1, ..., xec4
                     System.out.println("[Inserció] Insertat xec " + i + " amb valor inicial " + value + "€.");
                     Thread.sleep(400); // Simula processament de 0.4 segons
                 }
@@ -83,7 +83,7 @@ public class Main {
                 System.out.println("[Consulta] Saldo total actualitzat dels xecs: " + total + "€.");
                 return total;
             } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
+                Thread.currentThread().interrupt(); // Restaura el flag d'interrupció
                 throw new RuntimeException(e);
             }
         };
@@ -93,7 +93,7 @@ public class Main {
 
         try {
             // Llançar les tasques en paral·lel (amb coordinació via latches per dependències)
-            Future<?> insertionFuture = executor.submit(dataInsertion);
+            Future<?> insertionFuture = executor.submit(dataInsertion); 
             Future<?> modificationFuture = executor.submit(modifyData);
             Future<Integer> fetchFuture = executor.submit(fetchData);
 
